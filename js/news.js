@@ -8,10 +8,8 @@ const loadCeagoti = () => {
     
   }
   
-  
   // cetagori name show
   const cetagoriName = (cetagoris) => {
-    
     
     const cetagoriName = document.getElementById('cetagori')
     cetagoris.forEach(cetagori => {
@@ -35,7 +33,6 @@ const loadCeagoti = () => {
     toggolSpiner(true)
   }
 
-
   const newsDisplay = newses => {
   
     // news total count
@@ -50,7 +47,6 @@ const loadCeagoti = () => {
       totalNews.value =   `${newses.length} news find this catagoris`
     }
   
-    
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = ``;
   
@@ -72,13 +68,11 @@ const loadCeagoti = () => {
           <h5 class="card-title">${news.title}</h5>
           <p class="card-text">${news.details.slice(0, 350) + '...'}</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          
 
           <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center" style:"">
               
               <img class="img-thumbnail img-fluid w-25 rounded-circle" src="${news.author.img}" style="height: 80px;" alt="">
-              
               
             <div class="p-2">
               <p >Name: ${news.author.name ? news.author.name : 'No Author name'}</p>
@@ -102,13 +96,10 @@ const loadCeagoti = () => {
  
     newsContainer.appendChild(newsDiv)
     
-
   });
 
   toggolSpiner(false)
 }
-
-
 
 const newsDetails = (_id) =>{
   const url = `https://openapi.programming-hero.com/api/news/${_id}`
