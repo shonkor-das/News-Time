@@ -1,6 +1,6 @@
 
-let loadCeagoti = () => {
-    let url = `https://openapi.programming-hero.com/api/news/categories`
+const loadCeagoti = () => {
+    const url = `https://openapi.programming-hero.com/api/news/categories`
     fetch(url)
     .then(res => res.json())
     .then(data => cetagoriName(data.data.news_category))
@@ -10,23 +10,23 @@ let loadCeagoti = () => {
   
   
   // cetagori name show
-  let cetagoriName = (cetagoris) => {
+  const cetagoriName = (cetagoris) => {
     
     
-    let cetagoriName = document.getElementById('cetagori')
+    const cetagoriName = document.getElementById('cetagori')
     cetagoris.forEach(cetagori => {
     console.log(cetagori)
-    let cetagoriLi = document.createElement('li')
+    const cetagoriLi = document.createElement('li')
     cetagoriLi .innerHTML = `
-    <li onclick=(loadData('${cetagori.category_id}')) class="breadcrumb-item ms-4"><a href="#" class="text-decoration-none fw-bold">${cetagori.category_name}</a></li>
+    <li onclick=(loadData('${cetagori.category_id}')) class="breadcrumb-item ms-5"><a href="#" class="text-decoration-none fw-bold text-black">${cetagori.category_name}</a></li>
     `;
     cetagoriName.appendChild(cetagoriLi)
   
     })
   }
 
-  let loadData = (category_id) => {
-    let url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`
+  const loadData = (category_id) => {
+    const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`
     console.log(url)
     fetch(url)
     .then(res => res.json())
@@ -36,11 +36,11 @@ let loadCeagoti = () => {
   }
 
 
-  let newsDisplay = newses => {
+  const newsDisplay = newses => {
   
     // news total count
     
-    let totalNews = document.getElementById('total-news-count')
+    const totalNews = document.getElementById('total-news-count')
     totalNews.value = '';
     if( newses.length === 0){
       totalNews.value = "news not found"
@@ -51,7 +51,7 @@ let loadCeagoti = () => {
     }
   
     
-    let newsContainer = document.getElementById('news-container')
+    const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = ``;
   
     newses.sort((a, b) => {
@@ -59,7 +59,7 @@ let loadCeagoti = () => {
       });
     newses.forEach( news => {
       console.log(news)
-      let newsDiv = document.createElement('div')
+      const newsDiv = document.createElement('div')
       newsDiv.innerHTML = `
       
     <div   onclick="newsDetails('${news._id}')"  class="card mb-3" style="max-width: 100%;"  data-bs-toggle="modal" data-bs-target="#newsDetailsModal">
@@ -110,8 +110,8 @@ let loadCeagoti = () => {
 
 
 
-let newsDetails = (_id) =>{
-  let url = `https://openapi.programming-hero.com/api/news/${_id}`
+const newsDetails = (_id) =>{
+  const url = `https://openapi.programming-hero.com/api/news/${_id}`
   fetch(url)
   .then(res => res.json())
   .then(data => newsDetailsDisplay(data.data[0]))
@@ -119,11 +119,11 @@ let newsDetails = (_id) =>{
 }
 
 
- let newsDetailsDisplay = (modal) => {
-  let newsDetails = document.getElementById('newsDetailsModalLabel');
+ const newsDetailsDisplay = (modal) => {
+  const newsDetails = document.getElementById('newsDetailsModalLabel');
   newsDetails.innerText = modal.title;
 
-  let modalDetails = document.getElementById('modal-details-body')
+  const modalDetails = document.getElementById('modal-details-body')
   modalDetails.innerHTML = `
   <p>${modal.details}</p>
   <p><span><i class="fa-regular fa-eye"></i> ${modal.total_view ? modal.total_view : 'No view'}</span></p>
@@ -133,8 +133,8 @@ let newsDetails = (_id) =>{
  }
 
 
- let toggolSpiner = isLoading => {
-  let toggleSpiner = document.getElementById('spinner');
+ const toggolSpiner = isLoading => {
+  const toggleSpiner = document.getElementById('spinner');
   if(isLoading === true){
     toggleSpiner.classList.remove('d-none');
   }
@@ -143,9 +143,9 @@ let newsDetails = (_id) =>{
   }
  }
 
-  let blogDetails = () => {
-    let blogItems = document.getElementById('nav-blog')
-    let  blogItemsDiv = document.createElement('div')
+  const blogDetails = () => {
+    const blogItems = document.getElementById('nav-blog')
+    const  blogItemsDiv = document.createElement('div')
     blogItemsDiv.innerHTML = `
     <li class="nav-item">
                           <a class="nav-link fw-bold" href="#"  data-bs-toggle="modal" data-bs-target="#blogModal">Blog</a>
@@ -158,14 +158,14 @@ let newsDetails = (_id) =>{
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <p><span class="fw-bold">Difference between var, let and const :</span> In JavaScript, users can declare a variable using 3 keywords that are var, let, and const. In this article, we will see the differences between the var, let, and const keywords. We will discuss the scope and other required concepts about each keyword.</p>
+                            <p><span class="fw-bold">Difference between var, const and const :</span> In JavaScript, users can declare a variable using 3 keywords that are var, const, and const. In this article, we will see the differences between the var, const, and const keywords. We will discuss the scope and other required concepts about each keyword.</p>
 
                             <p><span class="fw-bold">Difference between regular functions and arrow 
                             functions :</span>This article discusses the major differences between the regular functions and the arrow functions.
 
                             Arrow functions – a new feature introduced in ES6 – enable writing concise functions in JavaScript. While both regular and arrow functions work in a similar manner, yet there are certain interesting differences between them, as discussed below</p>
 
-                            <p><span class="fw-bold">Why we use Template strings :</span> Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create strings that are complex and contain dynamic elements. Another great thing that comes with template strings are tags. Tags are functions that take a string and the decomposed parts of the string as parameters and are great for converting strings to different entities.</p>
+                            <p><span class="fw-bold">Why we use Template strings :</span> Template strings are a powerful feature of modern JavaScript released in ES6. It consts us insert/interpolate variables and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create strings that are complex and contain dynamic elements. Another great thing that comes with template strings are tags. Tags are functions that take a string and the decomposed parts of the string as parameters and are great for converting strings to different entities.</p>
 
                             <p><span class="fw-bold">Difference of .map, .forEach, .filter, .find :</span>Many posts discuss how to use .forEach(), .map(), .filter(), .reduce() and .find() on arrays in JavaScript. I thought it would be useful to provide an explanation of when to use the common array methods.
                             </p>
