@@ -89,8 +89,7 @@ const loadCeagoti = () => {
         </div>
       </div>
     </div>
-  </div>
-   
+  </div> 
 
     ` ;
  
@@ -109,7 +108,6 @@ const newsDetails = (_id) =>{
   
 }
 
-
  const newsDetailsDisplay = (modal) => {
   const newsDetails = document.getElementById('newsDetailsModalLabel');
   newsDetails.innerText = modal.title;
@@ -117,12 +115,9 @@ const newsDetails = (_id) =>{
   const modalDetails = document.getElementById('modal-details-body')
   modalDetails.innerHTML = `
   <p>${modal.details}</p>
-  <p><span><i class="fa-regular fa-eye"></i> ${modal.total_view ? modal.total_view : 'No view'}</span></p>
-  `
-  
+  <p><span><i class="fa-regular fa-eye"></i> ${modal.total_view ? modal.total_view : 'No view'}</span></p>`
 
  }
-
 
  const toggolSpiner = isLoading => {
   const toggleSpiner = document.getElementById('spinner');
@@ -171,7 +166,6 @@ const newsDetails = (_id) =>{
     `;
     blogItems.appendChild(blogItemsDiv);
   }
-
 
   blogDetails()
 
